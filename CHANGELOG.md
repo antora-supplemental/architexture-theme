@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2026-04-11
 
 ### Added
+
 - **Aesthetic Engine**: Initial implementation of the "Stone and Graphite" theme logic.
 - **Tailwind v4 Integration**: Migration to Tailwind v4 CSS pipeline.
 - **Structural Reveal**: Hardware-accelerated hexagonal View Transition for theme switching.
