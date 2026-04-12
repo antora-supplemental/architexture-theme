@@ -1,0 +1,32 @@
+/* 
+   architexture-theme-antora
+   Bespoke architectural theme for Antora documentation.
+   Inherits design principles from the 'Stone and Graphite' portfolio redesign.
+*/
+
+:root {
+  --arch-stone-neutral: #f5f5f4;
+  --arch-graphite-dark: #1c1917;
+  --arch-grid-line: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --arch-grid-line: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Base structural styles */
+.doc {
+  font-family: 'Instrument Sans', sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  tracking: -0.02em;
+}
+
+code, pre {
+  font-family: 'Space Mono', monospace;
+}

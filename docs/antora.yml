@@ -1,0 +1,7 @@
+name: architexture-theme-antora
+title: "Demo and Docs :: `architexture-theme-antora`"
+version: "0.1"
+start_page: guide:index.adoc
+nav:
+  - modules/guide/nav.adoc
+  - modules/ROOT/nav.adoc

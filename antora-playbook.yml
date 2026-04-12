@@ -1,0 +1,25 @@
+# Antora Playbook for architexture-theme-antora
+site:
+  title: "Demo and Docs :: architexture-theme-antora"
+  url: https://antora-supplemental.github.io/architexture-theme-antora
+  start_page: architexture-theme-antora:guide:index.adoc
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+      start_path: docs
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+
+output:
+  dir: ./build/site
+
+asciidoc:
+  attributes:
+    source-highlighter: highlight.js
+    icons: font
