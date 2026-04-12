@@ -1,6 +1,7 @@
 {
   "name": "@amdphreak/architexture-theme-antora",
   "version": "0.1.0",
+  "packageManager": "pnpm@10.33.0",
   "description": "Bespoke architectural theme for Antora documentation",
   "main": "index.js",
   "scripts": {
