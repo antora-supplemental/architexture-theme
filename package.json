@@ -1,13 +1,43 @@
 {
-  "name": "architexture-theme-antora",
+  "name": "@amdphreak/architexture-theme-antora",
   "version": "0.1.0",
-  "private": true,
-  "description": "Architectural theme for Antora documentation",
+  "description": "Bespoke architectural theme for Antora documentation",
+  "main": "index.js",
   "scripts": {
-    "build": "antora antora-playbook.yml"
+    "build:css": "tailwindcss -i src/styles/tailwind.css -o supplemental-ui/css/site-extra.css",
+    "watch:css": "tailwindcss -i src/styles/tailwind.css -o supplemental-ui/css/site-extra.css --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "supplemental-ui",
+    "docs",
+    "layouts"
+  ],
+  "keywords": [
+    "antora",
+    "theme",
+    "architectural",
+    "minimalist",
+    "documentation"
+  ],
+  "author": "Ryan Johnson (AMDphreak)",
+  "license": "MIT",
+  "homepage": "https://github.com/antora-supplemental/architexture-theme-antora#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antora-supplemental/architexture-theme-antora.git"
+  },
+  "bugs": {
+    "url": "https://github.com/antora-supplemental/architexture-theme-antora/issues"
   },
   "devDependencies": {
     "@antora/cli": "^3.1.9",
-    "@antora/site-generator": "^3.1.9"
+    "@antora/site-generator": "^3.1.9",
+    "@tailwindcss/cli": "^4.2.2",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.9",
+    "tailwindcss": "^4.2.2"
   }
 }
