@@ -12,7 +12,6 @@
     --color-stone-800: oklch(26.8% 0.007 34.298);
     --spacing: 0.25rem;
     --tracking-tight: -0.025em;
-    --tracking-widest: 0.1em;
     --leading-relaxed: 1.625;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -172,14 +171,26 @@
   }
 }
 @layer utilities {
+  .static {
+    position: static;
+  }
   .contents {
     display: contents;
   }
   .flex {
     display: flex;
   }
-  .h-full {
-    height: 100%;
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-8 {
+    height: calc(var(--spacing) * 8);
+  }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
+  .w-8 {
+    width: calc(var(--spacing) * 8);
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -190,24 +201,11 @@
   .items-center {
     align-items: center;
   }
-  .px-3 {
-    padding-inline: calc(var(--spacing) * 3);
-  }
-  .font-mono {
-    font-family: var(--font-mono);
-  }
-  .text-\[10px\] {
-    font-size: 10px;
-  }
-  .tracking-widest {
-    --tw-tracking: var(--tracking-widest);
-    letter-spacing: var(--tracking-widest);
+  .justify-center {
+    justify-content: center;
   }
   .text-stone-400 {
     color: var(--color-stone-400);
-  }
-  .uppercase {
-    text-transform: uppercase;
   }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
@@ -218,10 +216,6 @@
     transition-property: opacity;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
-  }
-  .select-none {
-    -webkit-user-select: none;
-    user-select: none;
   }
   .hover\:opacity-70 {
     &:hover {
@@ -324,11 +318,11 @@
   syntax: "*";
   inherits: false;
 }
-@property --tw-tracking {
+@property --tw-leading {
   syntax: "*";
   inherits: false;
 }
-@property --tw-leading {
+@property --tw-tracking {
   syntax: "*";
   inherits: false;
 }
@@ -345,8 +339,8 @@
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
-      --tw-tracking: initial;
       --tw-leading: initial;
+      --tw-tracking: initial;
       --tw-border-style: solid;
     }
   }
