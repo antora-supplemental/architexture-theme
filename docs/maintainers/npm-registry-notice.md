@@ -1,21 +1,20 @@
-# npm: deprecate CLI vs final patch publish
+# npm: web deprecate + final patch publish (use both)
 
-See the same guide in [antora-dark-theme `docs/maintainers/npm-registry-notice.md`](https://github.com/antora-supplemental/antora-dark-theme/blob/main/docs/maintainers/npm-registry-notice.md).
+Same model as [antora-dark-theme](https://github.com/antora-supplemental/antora-dark-theme/blob/main/docs/maintainers/npm-registry-notice.md).
 
-## This package (`@amdphreak/architexture-theme-antora`)
-
-**Final patch:** `0.1.1` — publish once so npmjs shows the new `README.md`.
+**Package:** `@amdphreak/architexture-theme-antora`  
+**Final npm version:** `0.1.1`
 
 ```powershell
 cd Z:\code\github.com\antora-supplemental\architexture-theme-antora
 pnpm run build:css
-# Remove "private": true from package.json temporarily
+# Remove "private": true from package.json
 npm publish --access public
-# Restore "private": true; commit if needed
+# Restore "private": true
 ```
 
-Optional — banner on *older* versions after publish:
+Short banner (after publish; overwrites website message):
 
 ```bash
-npm deprecate @amdphreak/architexture-theme-antora@"<0.1.1" "Retired — use GitHub ui-bundle.zip; see README on latest version."
+npm deprecate @amdphreak/architexture-theme-antora@* "RETIRED — Do not install. Open README tab or use GitHub ui-bundle.zip."
 ```

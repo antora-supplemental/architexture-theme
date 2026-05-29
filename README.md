@@ -1,6 +1,8 @@
-# ⚠️ DEPRECATED — do not install
+# DEPRECATED — do not install
 
 **The npm package `@amdphreak/architexture-theme-antora` is retired.** It will not receive updates. Do not add it to new projects.
+
+If the npm deprecation banner is hard to read in dark mode, **use this README** — it is the authoritative migration notice.
 
 ---
 
