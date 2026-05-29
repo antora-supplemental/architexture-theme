@@ -1,0 +1,20 @@
+# Example: architexture theme via release bundle (do not use npm)
+
+site:
+  title: My Documentation Site
+  # start_page: component::index.adoc
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+      start_path: docs
+
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/architexture-theme-antora/releases/download/v0.1.0/ui-bundle.zip
+    snapshot: true
+  # supplemental_files: ./supplemental-ui-overrides
+
+output:
+  dir: ./build/site

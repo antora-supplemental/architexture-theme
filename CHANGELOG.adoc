@@ -1,0 +1,13 @@
+= Changelog
+
+Release notes for tags. Detailed design history: `docs/modules/ROOT/pages/changelog.adoc`.
+
+== [Unreleased]
+
+* *Distribution:* GitHub Releases ship `ui-bundle.zip` only (no npm). Bundle-first docs; npm deprecation page for migration and lessons learned.
+
+== [0.1.0] - 2026-04-11
+
+* Stone and Graphite theme, Tailwind v4 CSS pipeline, structural reveal view transition, supplemental UI partials.
+
+link:docs/modules/ROOT/pages/changelog-details/2026-04-11-stone-and-graphite-reveal.adoc[Detailed notes — 2026-04-11]

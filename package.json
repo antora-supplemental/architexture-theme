@@ -1,22 +1,14 @@
 {
   "name": "@amdphreak/architexture-theme-antora",
   "version": "0.1.0",
+  "private": true,
   "packageManager": "pnpm@10.33.0",
-  "description": "Bespoke architectural theme for Antora documentation",
-  "main": "index.js",
+  "description": "Theme repo tooling only — distribute via GitHub release ui-bundle.zip, not npm.",
   "scripts": {
     "build:css": "tailwindcss -i src/styles/tailwind.css -o supplemental-ui/css/site-extra.css",
     "watch:css": "tailwindcss -i src/styles/tailwind.css -o supplemental-ui/css/site-extra.css --watch",
     "build": "pnpm build:css && antora antora-playbook.yml"
   },
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "supplemental-ui",
-    "docs",
-    "layouts"
-  ],
   "keywords": [
     "antora",
     "theme",

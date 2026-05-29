@@ -1,0 +1,30 @@
+= Installation
+:navtitle: Installation
+:description: Install architexture-theme-antora via the release UI bundle.
+
+== Release UI bundle
+
+Pin `ui-bundle.zip` from link:https://github.com/antora-supplemental/architexture-theme-antora/releases[GitHub Releases] in `antora-playbook.yml`:
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/architexture-theme-antora/releases/download/v0.1.0/ui-bundle.zip
+    snapshot: true
+----
+
+Optional branding—*one* supplemental directory:
+
+[source,yaml]
+----
+  supplemental_files: ./supplemental-ui-overrides
+----
+
+Build with Antora as usual. Pin `vX.Y.Z` in CI; avoid `releases/latest/...` unless you accept floating updates.
+
+Former npm consumers: xref:npm-deprecation.adoc[npm deprecation].
+
+== Vendor `supplemental-ui` (forks)
+
+Copy `supplemental-ui/` from this repository for a maintained fork; use Default UI + `supplemental_files: ./supplemental-ui` (run `pnpm build:css` when editing Tailwind sources).

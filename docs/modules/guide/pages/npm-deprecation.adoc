@@ -1,0 +1,79 @@
+= npm registry deprecation (archive)
+:navtitle: npm deprecation
+:page-pagination:
+:page-pagination-prev: installation.adoc
+:page-pagination-next: index.adoc
+:description: Why npm distribution ended for @amdphreak/architexture-theme-antora and how to use the release bundle.
+
+== Status
+
+The npm package `@amdphreak/architexture-theme-antora` is *deprecated* and *no longer published*.
+Distribution is the GitHub release `ui-bundle.zip` only—see xref:installation.adoc[Installation].
+
+Catalog: link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs portal].
+
+== Migrate off npm
+
+. Remove `@amdphreak/architexture-theme-antora` from `package.json` and the lockfile.
+. Delete scripts that copied `node_modules/@amdphreak/architexture-theme-antora/supplemental-ui`.
+. Set the playbook bundle URL (pin a version):
++
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/antora-supplemental/architexture-theme-antora/releases/download/v0.1.0/ui-bundle.zip
+    snapshot: true
+----
++
+. Optional overrides—*one* directory:
++
+[source,yaml]
+----
+  supplemental_files: ./supplemental-ui-overrides
+----
+
+== Lessons learned
+
+=== Architectural UI is not an npm library
+
+This theme is Tailwind-built CSS, Handlebars partials, and JS—consumed by Antora through `ui.bundle`, not `require()`.
+Publishing on npm under `@amdphreak/` added install friction without helping docs authors.
+
+*Habit:* release `ui-bundle.zip`; list it in the Antora extensions catalog.
+
+=== npm invited broken playbooks
+
+* Multiple supplemental directories (invalid in Antora).
+* `prebuild` copies from `node_modules` when the release zip already contains the theme.
+* Default UI bundle + npm overlay when the merged release artifact exists.
+
+*Habit:* one pinned bundle URL; optional one override folder for branding.
+
+=== Scoped package name ≠ distribution channel
+
+`@amdphreak/architexture-theme-antora` looked like a product install but was only supplemental files.
+Discovery belongs on link:https://antora-supplemental.github.io/docs/[Supplemental docs], not npmjs.
+
+== Archive: former npm install (do not use)
+
+[source,bash]
+----
+# REMOVED
+pnpm add -D @amdphreak/architexture-theme-antora
+----
+
+[source,yaml]
+----
+# REMOVED — use ui-bundle.zip
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./node_modules/@amdphreak/architexture-theme-antora/supplemental-ui
+----
+
+== Maintainers
+
+* Release workflow builds CSS (`pnpm build:css`), merges `supplemental-ui/` into `ui-bundle.zip`, no npm publish.
+* `package.json` is `private` for repo tooling only.

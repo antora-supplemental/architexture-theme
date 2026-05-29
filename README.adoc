@@ -1,6 +1,11 @@
-﻿# architexture-theme-antora
+﻿= architexture-theme-antora
 
 A bespoke, minimalist architectural theme for Antora documentation, inspired by the "Stone and Graphite" design system.
+
+IMPORTANT: Use the GitHub release `ui-bundle.zip` in your playbook—the habit to adopt.
+The npm package `@amdphreak/architexture-theme-antora` is deprecated and unpublished.
+link:https://antora-supplemental.github.io/architexture-theme-antora/architexture-theme-antora/guide/npm-deprecation.html[npm deprecation (lessons learned)]
+Catalog: link:https://antora-supplemental.github.io/docs/[Antora Supplemental docs].
 
 == Design Philosophy
 
