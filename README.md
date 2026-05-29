@@ -1,32 +1,65 @@
-# architexture-theme-antora
+# ⚠️ DEPRECATED — do not install
 
-Bespoke minimalist architectural theme for [Antora](https://antora.org) — Stone and Graphite design system.
+**The npm package `@amdphreak/architexture-theme-antora` is retired.** It will not receive updates. Do not add it to new projects.
 
-## The habit: use the release UI bundle
+---
 
-Pin the GitHub release `ui-bundle.zip` in your playbook (Default UI + this theme, merged). No npm package.
+## Why you should not use npm for this theme
+
+architexture-theme-antora is an **Antora UI bundle** (Tailwind-built CSS, partials, scripts), not a Node module you import. Installing from npm:
+
+- Pollutes the `@amdphreak` scope and your lockfile without helping Antora
+- Invites broken playbooks (stacked supplemental dirs, `node_modules` copy scripts)
+- Ignores the merged **`ui-bundle.zip`** that is the real distribution artifact
+
+**Use the release bundle in your playbook.** That is the habit to adopt.
+
+---
+
+## What to do instead (correct instructions)
+
+### 1. Pin the GitHub release UI bundle
+
+In `antora-playbook.yml`:
 
 ```yaml
 ui:
   bundle:
     url: https://github.com/antora-supplemental/architexture-theme-antora/releases/download/v0.1.0/ui-bundle.zip
     snapshot: true
-  supplemental_files: ./supplemental-ui-overrides   # optional
 ```
 
-Discover via [Antora Supplemental docs](https://antora-supplemental.github.io/docs/) (extensions registry).
+Use the latest `vX.Y.Z` from [GitHub Releases](https://github.com/antora-supplemental/architexture-theme-antora/releases).
 
-> **Former npm package `@amdphreak/architexture-theme-antora`:** deprecated and unpublished. [npm deprecation guide](https://antora-supplemental.github.io/architexture-theme-antora/architexture-theme-antora/guide/npm-deprecation.html).
+### 2. Optional overrides (one directory)
 
-## Docs & demo
+```yaml
+  supplemental_files: ./supplemental-ui-overrides
+```
 
-- [Documentation](https://antora-supplemental.github.io/architexture-theme-antora/)
-- [Full guide (AsciiDoc)](README.adoc)
+### 3. Remove this package if already installed
 
-## Releasing
+```bash
+pnpm remove -D @amdphreak/architexture-theme-antora
+# or: npm uninstall @amdphreak/architexture-theme-antora
+```
 
-Tag `vX.Y.Z` → [.github/workflows/release.yml](.github/workflows/release.yml) publishes `ui-bundle.zip` only.
+Remove scripts that copied `node_modules/@amdphreak/architexture-theme-antora/supplemental-ui`.
+
+---
+
+## Where to find full documentation
+
+| Resource | URL |
+|----------|-----|
+| **Install guide & lessons learned** | [npm deprecation (Antora site)](https://antora-supplemental.github.io/architexture-theme-antora/architexture-theme-antora/guide/npm-deprecation.html) |
+| **Docs & demo** | [antora-supplemental.github.io/architexture-theme-antora](https://antora-supplemental.github.io/architexture-theme-antora/) |
+| **Extensions catalog (org hub)** | [antora-supplemental.github.io/docs](https://antora-supplemental.github.io/docs/) |
+| **Source repository** | [github.com/antora-supplemental/architexture-theme-antora](https://github.com/antora-supplemental/architexture-theme-antora) |
+| **Example playbook** | [examples/antora-playbook.yml](https://github.com/antora-supplemental/architexture-theme-antora/blob/main/examples/antora-playbook.yml) |
+
+---
 
 ## License
 
-MIT
+MIT — see [repository LICENSE](https://github.com/antora-supplemental/architexture-theme-antora/blob/main/LICENSE).

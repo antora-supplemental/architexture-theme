@@ -4,6 +4,7 @@ Release notes for tags. Detailed design history: `docs/modules/ROOT/pages/change
 
 == [Unreleased]
 
+* *npm registry:* Formal deprecation notice in `README.md` and `deprecated` field; maintainer steps in `docs/maintainers/npm-registry-notice.md`.
 * *Distribution:* GitHub Releases ship `ui-bundle.zip` only (no npm). Bundle-first docs; npm deprecation page for migration and lessons learned.
 
 == [0.1.0] - 2026-04-11
