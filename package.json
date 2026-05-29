@@ -1,15 +1,18 @@
 {
   "name": "@amdphreak/architexture-theme-antora",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
   "packageManager": "pnpm@10.33.0",
   "description": "DEPRECATED on npm — use GitHub release ui-bundle.zip. See README.md.",
   "deprecated": "Retired: do not install. Pin ui.bundle.url to https://github.com/antora-supplemental/architexture-theme-antora/releases/download/v0.1.0/ui-bundle.zip — docs: https://antora-supplemental.github.io/architexture-theme-antora/architexture-theme-antora/guide/npm-deprecation.html",
+  "private": true,
   "scripts": {
     "build:css": "tailwindcss -i src/styles/tailwind.css -o supplemental-ui/css/site-extra.css",
     "watch:css": "tailwindcss -i src/styles/tailwind.css -o supplemental-ui/css/site-extra.css --watch",
     "build": "pnpm build:css && antora antora-playbook.yml"
   },
+  "files": [
+    "supplemental-ui"
+  ],
   "keywords": [
     "antora",
     "theme",
