@@ -1,2 +1,2 @@
-﻿* xref:index.adoc[Home]
+﻿* xref:guide:index.adoc[Theme Guide]
 * xref:changelog.adoc[Changelog]

@@ -1,9 +1,12 @@
-<header class="header">
-  <nav class="navbar">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="{{{or site.url siteRootPath}}}">{{site.title}}</a>
+<header class="header arch-header">
+  <nav class="navbar arch-navbar" aria-label="Site">
+    <div class="navbar-brand arch-navbar-brand">
+      <a class="navbar-item arch-site-title" href="{{{relativize page.componentVersion.url}}}">
+        <span class="arch-kicker">{{{or (lookup site.keys 'header_kicker') 'Documentation'}}}</span>
+        <span class="arch-title">{{{or (lookup site.keys 'header_doc_title') site.title}}}</span>
+      </a>
       {{#if env.SITE_SEARCH_PROVIDER}}
-      <div class="navbar-item search hide-for-print">
+      <div class="navbar-item search hide-for-print arch-search">
         <div id="search-field" class="field">
           <input id="search-input" type="text" placeholder="Search the docs"{{#if page.home}} autofocus{{/if}}>
         </div>
@@ -15,12 +18,15 @@
         <span></span>
       </button>
     </div>
-    <div id="topbar-nav" class="navbar-menu">
-      <div class="navbar-end">
-        <a class="navbar-item" href="{{{or site.url siteRootPath}}}">Home</a>
-        <div class="navbar-item">
-          <div id="theme-toggle" class="cursor-pointer hover:opacity-70 transition-opacity flex items-center justify-center w-8 h-8 structural-border">
-             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-stone-400 dark:text-stone-500">
+    <div id="topbar-nav" class="navbar-menu arch-navbar-menu">
+      <div class="navbar-end arch-navbar-end">
+        <a class="navbar-item arch-nav-btn" href="{{{relativize page.componentVersion.url}}}">Home</a>
+        {{#if (and page.origin page.origin.webUrl)}}
+        <a class="navbar-item arch-nav-btn arch-nav-btn-external" href="{{page.origin.webUrl}}" rel="noopener" target="_blank" title="Source repository">Source</a>
+        {{/if}}
+        <div class="navbar-item arch-theme-item">
+          <div id="theme-toggle" class="arch-theme-toggle structural-border" role="button" tabindex="0" aria-label="Toggle color theme">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arch-theme-icon" aria-hidden="true">
                <circle cx="12" cy="12" r="10"></circle>
                <path d="M12 2a10 10 0 0 0 0 20Z" fill="currentColor"></path>
              </svg>

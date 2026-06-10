@@ -1,8 +1,11 @@
-# Antora Playbook for architexture-theme-antora
+# Antora Playbook for architexture-theme
 site:
-  title: "Demo and Docs :: architexture-theme-antora"
-  url: https://antora-supplemental.github.io/architexture-theme-antora
-  start_page: architexture-theme-antora:guide:index.adoc
+  title: architexture-theme
+  url: https://antora-supplemental.github.io/architexture-theme
+  start_page: architexture-theme:guide:index.adoc
+  keys:
+    header_kicker: Documentation
+    header_doc_title: architexture-theme
 
 content:
   sources:

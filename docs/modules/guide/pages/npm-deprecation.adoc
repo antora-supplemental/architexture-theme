@@ -22,7 +22,7 @@ Catalog: link:https://antora-supplemental.github.io/docs/[Antora Supplemental do
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/architexture-theme-antora/releases/download/v0.1.0/ui-bundle.zip
+    url: https://github.com/antora-supplemental/architexture-theme/releases/download/v0.1.0/ui-bundle.zip
     snapshot: true
 ----
 +

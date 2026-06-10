@@ -22,7 +22,7 @@
     const themeToggle = document.getElementById("theme-toggle");
     if (!themeToggle) return;
     
-    themeToggle.addEventListener("click", () => {
+    const onToggle = () => {
       const isDark = document.documentElement.classList.contains('dark');
       const newTheme = isDark ? 'light' : 'dark';
       
@@ -67,6 +67,14 @@
       transition.finished.then(() => {
         document.documentElement.classList.remove('hex-transitioning');
       });
+    };
+
+    themeToggle.addEventListener("click", onToggle);
+    themeToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        onToggle();
+      }
     });
   };
 

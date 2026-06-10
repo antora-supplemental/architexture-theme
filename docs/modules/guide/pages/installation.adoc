@@ -1,16 +1,16 @@
 = Installation
 :navtitle: Installation
-:description: Install architexture-theme-antora via the release UI bundle.
+:description: Install architexture-theme via the release UI bundle.
 
 == Release UI bundle
 
-Pin `ui-bundle.zip` from link:https://github.com/antora-supplemental/architexture-theme-antora/releases[GitHub Releases] in `antora-playbook.yml`:
+Pin `ui-bundle.zip` from link:https://github.com/antora-supplemental/architexture-theme/releases[GitHub Releases] in `antora-playbook.yml`:
 
 [source,yaml]
 ----
 ui:
   bundle:
-    url: https://github.com/antora-supplemental/architexture-theme-antora/releases/download/v0.1.0/ui-bundle.zip
+    url: https://github.com/antora-supplemental/architexture-theme/releases/download/v0.1.0/ui-bundle.zip
     snapshot: true
 ----
 

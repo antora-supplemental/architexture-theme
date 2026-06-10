@@ -1,0 +1,8 @@
+// Apply these on GitHub → About → Topics.
+{
+  repository: "https://github.com/antora-supplemental/architexture-theme",
+  githubTopics: [
+    "antora-theme",
+    "antora-light-theme",
+  ],
+}

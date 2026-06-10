@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "packageManager": "pnpm@10.33.0",
   "description": "DEPRECATED on npm — use GitHub release ui-bundle.zip. See README.md.",
-  "deprecated": "Retired: do not install. Pin ui.bundle.url to https://github.com/antora-supplemental/architexture-theme-antora/releases/download/v0.1.0/ui-bundle.zip — docs: https://antora-supplemental.github.io/architexture-theme-antora/architexture-theme-antora/guide/npm-deprecation.html",
+  "deprecated": "Retired: do not install. Pin ui.bundle.url to https://github.com/antora-supplemental/architexture-theme/releases/download/v0.1.0/ui-bundle.zip — docs: https://antora-supplemental.github.io/architexture-theme/architexture-theme/guide/npm-deprecation.html",
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i src/styles/tailwind.css -o supplemental-ui/css/site-extra.css",
@@ -22,13 +22,13 @@
   ],
   "author": "Ryan Johnson (AMDphreak)",
   "license": "MIT",
-  "homepage": "https://github.com/antora-supplemental/architexture-theme-antora#readme",
+  "homepage": "https://github.com/antora-supplemental/architexture-theme#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antora-supplemental/architexture-theme-antora.git"
+    "url": "git+https://github.com/antora-supplemental/architexture-theme.git"
   },
   "bugs": {
-    "url": "https://github.com/antora-supplemental/architexture-theme-antora/issues"
+    "url": "https://github.com/antora-supplemental/architexture-theme/issues"
   },
   "devDependencies": {
     "@antora/cli": "^3.1.9",
