@@ -485,7 +485,7 @@ html.dark .arch-header .navbar-end > a.navbar-item.arch-nav-btn-external {
 html.dark .arch-header .navbar-end > a.navbar-item.arch-nav-btn-external:hover, html.dark .arch-header .navbar-end > a.navbar-item.arch-nav-btn-external:focus {
   background: hsl(var(--muted)) !important;
   color: hsl(var(--arch-header-fg)) !important;
-  border-color: hsl(var(--border)) !important;
+  border-color: hsl(var(--foreground)) !important;
   opacity: 1;
 }
 .arch-theme-item {
