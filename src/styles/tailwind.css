@@ -193,6 +193,11 @@ pre,
   left: 0 !important;
   right: 0 !important;
   z-index: 8;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0.5rem;
   height: var(--navbar-height);
   min-height: var(--navbar-height);
   max-height: var(--navbar-height);
@@ -206,7 +211,7 @@ pre,
   display: flex;
   align-items: center;
   height: 100%;
-  flex-shrink: 1;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
@@ -215,6 +220,7 @@ pre,
   display: flex;
   align-items: center;
   height: 100%;
+  flex: 0 0 auto;
 }
 
 .arch-site-title {
@@ -271,8 +277,8 @@ pre,
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.arch-nav-btn:hover,
-.arch-nav-btn:focus {
+.arch-nav-btn:not(.arch-nav-btn-external):hover,
+.arch-nav-btn:not(.arch-nav-btn-external):focus {
   background: hsl(var(--muted)) !important;
   color: hsl(var(--arch-header-fg)) !important;
 }
@@ -283,15 +289,12 @@ pre,
   border-color: hsl(var(--primary)) !important;
 }
 
-.dark .arch-nav-btn-external {
-  background: hsl(var(--primary)) !important;
-  color: hsl(var(--primary-foreground)) !important;
-}
-
 .arch-nav-btn-external:hover,
 .arch-nav-btn-external:focus {
-  opacity: 0.9;
   background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border-color: hsl(var(--primary)) !important;
+  opacity: 0.88;
 }
 
 .arch-theme-item {
@@ -325,12 +328,35 @@ pre,
   color: hsl(var(--arch-header-muted));
 }
 
+.arch-search {
+  display: flex;
+  align-items: center;
+  padding: 0 0.15rem !important;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
 .arch-search #search-input {
+  width: 10rem;
+  max-width: 28vw;
   border: 1px solid hsl(var(--border));
   background: hsl(var(--arch-header-bg));
   color: hsl(var(--arch-header-fg));
   font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  padding: 0 0.35rem;
   border-radius: 0;
+}
+
+.arch-search #search-input::placeholder {
+  color: hsl(var(--arch-header-muted));
+  opacity: 0.85;
+}
+
+.arch-search #search-input:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 1px;
 }
 
 /* Doc toolbar — sticky flush under fixed navbar */
@@ -357,12 +383,18 @@ pre,
 }
 
 .toolbar .breadcrumbs {
-  display: flex;
+  display: none;
   align-items: center;
   min-height: 0;
   margin: 0;
   padding: 0;
   line-height: 1.2;
+}
+
+@media screen and (min-width: 1024px) {
+  .toolbar .breadcrumbs {
+    display: flex;
+  }
 }
 
 .toolbar .breadcrumbs ul {
@@ -383,7 +415,9 @@ pre,
 .toolbar .edit-this-page {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
   margin-left: auto;
+  padding-right: 0.5rem;
   line-height: 1.2;
 }
 
@@ -396,11 +430,25 @@ pre,
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .toolbar .home-link:hover,
 .toolbar .edit-this-page a:hover {
   color: hsl(var(--arch-header-fg)) !important;
+}
+
+/* Toolbar icons — Default UI SVGs are dark strokes; invert on dark toolbar */
+html.dark .toolbar .nav-toggle,
+html.dark .toolbar .home-link {
+  filter: brightness(0) invert(1);
+  opacity: 0.82;
+}
+
+html.dark .toolbar .nav-toggle:hover,
+html.dark .toolbar .home-link:hover,
+html.dark .toolbar .home-link.is-current {
+  opacity: 1;
 }
 
 /* Side navigation */
@@ -560,6 +608,45 @@ html.dark .nav-panel-explore .component.is-current .title a {
   color: hsl(var(--arch-header-muted)) !important;
 }
 
+/* Beat .doc ul list-style restore — TOC is a ul inside article.doc on mobile */
+.toc .toc-menu ul,
+.doc .toc .toc-menu ul,
+.doc aside.toc ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.toc .toc-menu li {
+  margin: 0;
+}
+
+.toc .toc-menu a {
+  display: block;
+  border-left: 2px solid hsl(var(--border));
+  padding: 0.25rem 0 0.25rem 0.5rem;
+  text-decoration: none;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.toc .toc-menu li[data-level="2"] a {
+  padding-left: 1.25rem;
+}
+
+.toc .toc-menu li[data-level="3"] a {
+  padding-left: 2rem;
+}
+
+.toc .toc-menu a:hover {
+  color: hsl(var(--arch-header-fg)) !important;
+}
+
+.toc .toc-menu a.is-active {
+  border-left-color: hsl(var(--arch-header-fg));
+  color: hsl(var(--arch-header-fg)) !important;
+  font-weight: 600;
+}
+
 .toc a {
   color: hsl(var(--muted-foreground)) !important;
 }
@@ -567,6 +654,22 @@ html.dark .nav-panel-explore .component.is-current .title a {
 .toc .is-active > a {
   color: hsl(var(--arch-header-fg)) !important;
   font-weight: 600;
+}
+
+/* Mobile embedded TOC (sidebar hidden) — align with article body */
+@media screen and (max-width: 1023.5px) {
+  .doc aside.toc.embedded {
+    margin: 0 0 1.25rem;
+    padding: 0;
+  }
+
+  .doc aside.toc.embedded .toc-menu h3 {
+    display: block;
+    height: auto;
+    min-height: 0;
+    margin: 0 0 0.35rem;
+    padding: 0;
+  }
 }
 
 /* Main article column — beat Antora default white .content / main.article backgrounds */
@@ -682,6 +785,99 @@ html.dark .doc .page > h1:first-child {
 .doc .ulist,
 .doc .olist {
   color: hsl(var(--muted-foreground));
+}
+
+/* Doc lists — Tailwind preflight strips list-style; scope to AsciiDoc ulist/olist only */
+.doc .ulist > ul,
+.doc .olist > ol,
+.doc .ulist ul,
+.doc .olist ol {
+  margin: 0;
+  padding: 0 0 0 2rem;
+}
+
+.doc .ulist > ul:not(.no-bullet, .none, .unstyled, .checklist, .tablist),
+.doc .ulist ul:not(.no-bullet, .none, .unstyled, .checklist, .tablist) {
+  list-style-type: disc;
+}
+
+.doc .olist > ol:not(.unnumbered, .none, .unstyled),
+.doc .olist ol:not(.unnumbered, .none, .unstyled) {
+  list-style-type: decimal;
+}
+
+.doc .olist > ol.unstyled,
+.doc .olist > ol.unnumbered,
+.doc .olist > ol.none,
+.doc .ulist > ul.unstyled,
+.doc .ulist > ul.no-bullet,
+.doc .ulist > ul.none,
+.doc .ulist > ul.checklist,
+.doc .tablist,
+.doc .tablist ul {
+  list-style: none;
+}
+
+.doc .olist > ol.unnumbered,
+.doc .olist > ol.unstyled,
+.doc .ulist > ul.no-bullet,
+.doc .ulist > ul.unstyled {
+  padding-left: 1.25rem;
+}
+
+.doc .ulist > ul.unstyled,
+.doc .olist > ol.unstyled {
+  padding-left: 0;
+}
+
+.doc .ulist > ul.checklist {
+  padding-left: 1.75rem;
+}
+
+.doc .ulist > ul.circle {
+  list-style-type: circle;
+}
+
+.doc .ulist > ul.disc {
+  list-style-type: disc;
+}
+
+.doc .ulist > ul.square {
+  list-style-type: square;
+}
+
+.doc .ulist > ul.circle ul:not([class]),
+.doc .ulist > ul.disc ul:not([class]),
+.doc .ulist > ul.square ul:not([class]) {
+  list-style: inherit;
+}
+
+.doc .olist > ol.arabic {
+  list-style-type: decimal;
+}
+
+.doc .olist > ol.decimal {
+  list-style-type: decimal-leading-zero;
+}
+
+.doc .olist > ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+
+.doc .olist > ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+
+.doc .olist > ol.lowerroman {
+  list-style-type: lower-roman;
+}
+
+.doc .olist > ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+.doc .olist > ol.lowergreek {
+  list-style-type: lower-greek;
 }
 
 .doc .paragraph strong,
@@ -913,31 +1109,98 @@ html.dark .navbar .navbar-menu {
 }
 
 html.dark .nav .nav-link:hover,
-html.dark .navbar .navbar-item:hover {
+html.dark .navbar .navbar-item:not(.arch-nav-btn):hover {
   background-color: hsl(var(--muted)) !important;
 }
 
-/* Mobile nav */
-@media screen and (max-width: 1023px) {
-  .arch-header .arch-navbar,
-  .arch-header .navbar {
-    height: auto;
-    max-height: none;
+/* Mobile mast — single fixed row (no Bulma burger collapse) */
+@media screen and (max-width: 1023.5px) {
+  .arch-header .navbar-burger {
+    display: none !important;
   }
 
-  .arch-header .navbar-menu.is-active {
-    background: hsl(var(--arch-header-bg)) !important;
-    border-top: 1px solid hsl(var(--border));
+  .arch-header .navbar-menu,
+  .arch-header .navbar-menu.arch-navbar-menu {
+    display: flex !important;
+    flex: 0 0 auto;
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 0.35rem 0 0 !important;
   }
 
   .arch-navbar-end {
-    flex-direction: column;
-    align-items: stretch !important;
-    padding: 0.5rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center !important;
+    gap: 0.15rem;
+    padding: 0;
+  }
+
+  .arch-kicker {
+    display: none;
+  }
+
+  .arch-site-title {
+    gap: 0;
+    padding: 0 0.5rem !important;
+  }
+
+  .arch-title {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .arch-nav-btn-home {
+    display: none !important;
   }
 
   .arch-nav-btn {
-    width: 100%;
-    justify-content: center;
+    height: 1.85rem !important;
+    padding: 0 0.55rem !important;
+    margin: 0 !important;
+    font-size: 0.75rem !important;
+  }
+
+  .arch-nav-btn-external {
+    padding: 0 0.45rem !important;
+  }
+
+  .arch-theme-item {
+    padding: 0 0.1rem !important;
+  }
+
+  .arch-search #search-input {
+    width: 5.5rem;
+    max-width: 22vw;
+    font-size: 0.8125rem;
+    padding: 0 0.25rem;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1023.5px) {
+  .arch-search #search-input {
+    width: 7rem;
+    max-width: 28vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .arch-header .arch-search {
+    display: none !important;
+  }
+
+  .arch-nav-btn-external {
+    font-size: 0.6875rem !important;
+    letter-spacing: 0;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .arch-search #search-input {
+    width: 11rem;
+    max-width: none;
   }
 }

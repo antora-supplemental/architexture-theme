@@ -23,7 +23,19 @@ ui:
 output:
   dir: ./build/site
 
+runtime:
+  fetch: true
+
+antora:
+  extensions:
+    - require: "@antora/lunr-extension"
+      index_latest_only: true
+      index_by_heading: true
+      snippet_length: 200
+
 asciidoc:
+  extensions:
+    - "@asciidoctor/tabs"
   attributes:
     source-highlighter: highlight.js
     icons: font

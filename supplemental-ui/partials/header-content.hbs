@@ -5,22 +5,17 @@
         <span class="arch-kicker">{{{or (lookup site.keys 'header_kicker') 'Documentation'}}}</span>
         <span class="arch-title">{{{or (lookup site.keys 'header_doc_title') site.title}}}</span>
       </a>
-      {{#if env.SITE_SEARCH_PROVIDER}}
-      <div class="navbar-item search hide-for-print arch-search">
-        <div id="search-field" class="field">
-          <input id="search-input" type="text" placeholder="Search the docs"{{#if page.home}} autofocus{{/if}}>
-        </div>
-      </div>
-      {{/if}}
-      <button class="navbar-burger" data-target="topbar-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
-    <div id="topbar-nav" class="navbar-menu arch-navbar-menu">
+    <div id="topbar-nav" class="navbar-menu arch-navbar-menu" role="navigation" aria-label="Site actions">
       <div class="navbar-end arch-navbar-end">
-        <a class="navbar-item arch-nav-btn" href="{{{relativize page.componentVersion.url}}}">Home</a>
+        {{#if env.SITE_SEARCH_PROVIDER}}
+        <div class="navbar-item search hide-for-print arch-search">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search" autocomplete="off" aria-label="Search the docs"{{#if page.home}} autofocus{{/if}}>
+          </div>
+        </div>
+        {{/if}}
+        <a class="navbar-item arch-nav-btn arch-nav-btn-home" href="{{{relativize page.componentVersion.url}}}">Home</a>
         {{#if (and page.origin page.origin.webUrl)}}
         <a class="navbar-item arch-nav-btn arch-nav-btn-external" href="{{page.origin.webUrl}}" rel="noopener" target="_blank" title="Source repository">Source</a>
         {{/if}}
