@@ -342,20 +342,30 @@ code, kbd, pre, .doc pre, .doc code {
   border-bottom: 1px solid hsl(var(--border)) !important;
   box-shadow: none !important;
 }
-.arch-header .navbar-brand, .arch-header .navbar-menu, .arch-header .navbar-end {
+.arch-header .navbar-brand {
+  display: flex;
   align-items: center;
+  height: 100%;
+  flex-shrink: 1;
+  min-width: 0;
+}
+.arch-header .navbar-menu, .arch-header .navbar-end {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 .arch-site-title {
-  display: flex !important;
+  display: inline-flex !important;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: baseline !important;
-  gap: 0.5rem 0.75rem;
-  height: var(--navbar-height);
+  flex-wrap: nowrap;
+  align-items: center !important;
+  gap: 0.75rem;
+  height: auto !important;
+  max-height: var(--navbar-height);
   padding: 0 0.75rem !important;
   background: transparent !important;
   text-decoration: none !important;
-  white-space: nowrap;
+  line-height: 1 !important;
 }
 .arch-kicker {
   font-family: var(--font-mono);
@@ -364,6 +374,7 @@ code, kbd, pre, .doc pre, .doc code {
   text-transform: uppercase;
   color: hsl(var(--arch-header-muted));
   line-height: 1;
+  flex-shrink: 0;
 }
 .arch-title {
   font-family: var(--font-heading);
@@ -372,6 +383,8 @@ code, kbd, pre, .doc pre, .doc code {
   letter-spacing: -0.02em;
   color: hsl(var(--arch-header-fg));
   line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .arch-nav-btn {
   display: inline-flex !important;
@@ -409,7 +422,13 @@ code, kbd, pre, .doc pre, .doc code {
   background: hsl(var(--primary)) !important;
 }
 .arch-theme-item {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
   padding: 0 0.35rem !important;
+}
+.arch-header .navbar-item.arch-nav-btn {
+  align-self: center;
 }
 .arch-theme-toggle {
   display: flex;
@@ -439,11 +458,47 @@ code, kbd, pre, .doc pre, .doc code {
   position: sticky !important;
   top: var(--navbar-height) !important;
   z-index: 3;
+  display: flex !important;
+  flex-wrap: nowrap;
+  align-items: center !important;
   height: var(--toolbar-height);
   min-height: var(--toolbar-height);
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   background: hsl(var(--arch-panel-bg)) !important;
   border-bottom: 1px solid hsl(var(--border)) !important;
   color: hsl(var(--muted-foreground)) !important;
+}
+.toolbar .nav-toggle, .toolbar .home-link {
+  flex-shrink: 0;
+  align-self: center;
+}
+.toolbar .breadcrumbs {
+  display: flex;
+  align-items: center;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+.toolbar .breadcrumbs ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+.toolbar .breadcrumbs li {
+  display: flex;
+  align-items: center;
+  line-height: 1.2;
+}
+.toolbar .edit-this-page {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  line-height: 1.2;
 }
 .toolbar .home-link, .toolbar .edit-this-page a, .toolbar .toolbar-label {
   color: hsl(var(--muted-foreground)) !important;
@@ -451,6 +506,7 @@ code, kbd, pre, .doc pre, .doc code {
   font-size: 0.625rem !important;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 .toolbar .home-link:hover, .toolbar .edit-this-page a:hover {
   color: hsl(var(--arch-header-fg)) !important;
@@ -584,6 +640,52 @@ html.dark .doc .sidebarblock, html.dark .doc .sidebarblock > .content, html.dark
 html.dark .doc table.tableblock thead th, html.dark .doc table.tableblock tbody td {
   background-color: transparent !important;
   color: hsl(var(--foreground)) !important;
+}
+html.dark .doc code, html.dark .doc pre, html.dark .doc .listingblock pre, html.dark .doc .listingblock pre.highlight, html.dark .doc .listingblock pre.highlight code, html.dark .doc .literalblock pre, html.dark .doc pre.content, html.dark .doc .highlight pre, html.dark .doc .highlight code {
+  background-color: hsl(var(--arch-code-bg)) !important;
+  color: hsl(60 9% 85%) !important;
+  border-color: hsl(var(--border)) !important;
+}
+html.dark .doc .listingblock > .content, html.dark .doc .literalblock > .content {
+  background-color: hsl(var(--arch-code-bg)) !important;
+}
+html.dark .doc p code, html.dark .doc td code, html.dark .doc li code {
+  background-color: hsl(var(--muted)) !important;
+  color: hsl(24 10% 78%) !important;
+  border-color: hsl(var(--border)) !important;
+}
+html.dark .doc .hljs, html.dark .doc .highlight {
+  background-color: hsl(var(--arch-code-bg)) !important;
+  color: hsl(60 9% 85%) !important;
+}
+html.dark .doc .hljs-keyword, html.dark .doc .hljs-selector-tag, html.dark .doc .hljs-section, html.dark .doc .hljs-link {
+  color: #b8a0c8;
+}
+html.dark .doc .hljs-string, html.dark .doc .hljs-title, html.dark .doc .hljs-name, html.dark .doc .hljs-type, html.dark .doc .hljs-attribute, html.dark .doc .hljs-symbol, html.dark .doc .hljs-bullet, html.dark .doc .hljs-addition, html.dark .doc .hljs-variable, html.dark .doc .hljs-template-tag, html.dark .doc .hljs-template-variable {
+  color: #8fa87a;
+}
+html.dark .doc .hljs-comment, html.dark .doc .hljs-quote, html.dark .doc .hljs-deletion, html.dark .doc .hljs-meta {
+  color: #6b6560;
+  font-style: italic;
+}
+html.dark .doc .hljs-number, html.dark .doc .hljs-regexp, html.dark .doc .hljs-literal {
+  color: #b8956e;
+}
+html.dark .doc .hljs-built_in, html.dark .doc .hljs-builtin-name {
+  color: #c4a86a;
+}
+html.dark .doc .hljs-function {
+  color: #7a9ec4;
+}
+html.dark .doc .hljs-subst {
+  color: hsl(60 9% 85%);
+  font-weight: 400;
+}
+html.dark .doc .hljs-emphasis {
+  font-style: italic;
+}
+html.dark .doc .hljs-strong {
+  font-weight: 600;
 }
 .breadcrumbs {
   font-family: var(--font-mono) !important;
