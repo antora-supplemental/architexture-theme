@@ -491,8 +491,13 @@ html.dark .arch-header .navbar-end > a.navbar-item.arch-nav-btn-external:hover, 
 .arch-theme-item {
   display: flex !important;
   align-items: center !important;
-  height: 100% !important;
+  align-self: center !important;
+  height: auto !important;
   padding: 0 0.35rem !important;
+  background: transparent !important;
+}
+.arch-header .navbar-item.arch-theme-item:hover, .arch-header .navbar-item.arch-theme-item:focus {
+  background: transparent !important;
 }
 .arch-header .navbar-item.arch-nav-btn {
   align-self: center;
@@ -504,10 +509,14 @@ html.dark .arch-header .navbar-end > a.navbar-item.arch-nav-btn-external:hover, 
   width: 2rem;
   height: 2rem;
   cursor: pointer;
-  transition: opacity 0.15s ease;
+  background: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
-.arch-theme-toggle:hover {
-  opacity: 0.7;
+.arch-theme-toggle:hover, .arch-theme-toggle:focus-visible {
+  background: hsl(var(--muted));
+}
+.arch-theme-toggle:hover .arch-theme-icon, .arch-theme-toggle:focus-visible .arch-theme-icon {
+  color: hsl(var(--arch-header-fg));
 }
 .arch-theme-icon {
   width: 1rem;
@@ -1042,7 +1051,7 @@ html.dark .navbar, html.dark .navbar .navbar-menu {
   background-color: hsl(var(--arch-header-bg)) !important;
   border-color: hsl(var(--border)) !important;
 }
-html.dark .nav .nav-link:hover, html.dark .navbar .navbar-item:not(.arch-nav-btn):hover {
+html.dark .nav .nav-link:hover, html.dark .navbar .navbar-item:not(.arch-nav-btn):not(.arch-theme-item):hover {
   background-color: hsl(var(--muted)) !important;
 }
 @media screen and (max-width: 1023.5px) {
