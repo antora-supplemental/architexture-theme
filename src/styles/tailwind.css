@@ -381,8 +381,35 @@ pre,
   font-weight: 600;
 }
 
+/* Main article column — beat Antora default white .content / main.article backgrounds */
+main.article,
+main.article > .content,
+article.doc,
+.doc {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+html.dark main.article,
+html.dark main.article > .content,
+html.dark article.doc,
+html.dark .doc {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
 /* Article */
 .doc {
+  color: hsl(var(--foreground)) !important;
+}
+
+html.dark .doc h1,
+html.dark .doc h2,
+html.dark .doc h3,
+html.dark .doc h4,
+html.dark .doc h5,
+html.dark .doc h6,
+html.dark .doc .page > h1:first-child {
   color: hsl(var(--foreground)) !important;
 }
 
@@ -472,6 +499,30 @@ pre,
 .doc .paragraph strong,
 .doc dt {
   color: hsl(var(--foreground));
+}
+
+/* In-article block shells (Antora sets light fills on nested .content) */
+html.dark .doc .sidebarblock,
+html.dark .doc .sidebarblock > .content,
+html.dark .doc .exampleblock > .content,
+html.dark .doc .quoteblock,
+html.dark .doc .quoteblock blockquote,
+html.dark .doc .literalblock > .content,
+html.dark .doc .listingblock > .content,
+html.dark .doc .admonitionblock,
+html.dark .doc .admonitionblock table,
+html.dark .doc .admonitionblock td,
+html.dark .doc table.tableblock thead,
+html.dark .doc table.tableblock tbody {
+  background-color: hsl(var(--arch-panel-bg)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+html.dark .doc table.tableblock thead th,
+html.dark .doc table.tableblock tbody td {
+  background-color: transparent !important;
+  color: hsl(var(--foreground)) !important;
 }
 
 /* Breadcrumbs */
