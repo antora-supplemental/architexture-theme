@@ -436,6 +436,115 @@ pre,
   margin-bottom: 0.5rem;
 }
 
+/* Component / version picker (explore panel) */
+.nav-panel-explore .context {
+  background: hsl(var(--arch-panel-bg));
+  border-bottom: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.nav-panel-explore .context .title {
+  color: hsl(var(--foreground));
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: var(--font-heading) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.nav-panel-explore .context .version {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0;
+  padding: 0.1rem 0.5rem;
+}
+
+.nav-panel-explore .context .version:hover {
+  background-color: hsl(var(--accent));
+  border-color: hsl(var(--border));
+}
+
+.nav-panel-explore .components,
+.nav-panel-explore .component,
+.nav-panel-explore .versions,
+.nav-panel-explore .context .selector,
+.nav-panel-explore .context .selector .components {
+  background-color: hsl(var(--arch-panel-bg)) !important;
+  color: hsl(var(--foreground));
+  box-shadow: none;
+}
+
+.nav-panel-explore .component .title a,
+.nav-panel-explore .versions a {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0;
+}
+
+.nav-panel-explore .versions a:hover,
+.nav-panel-explore .component .title a:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--foreground));
+}
+
+.nav-panel-explore .versions .is-current a,
+.nav-panel-explore .component.is-current .title a {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  border-color: hsl(var(--border));
+}
+
+html.dark .nav-panel-explore .context .version {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--muted)) !important;
+  border-color: hsl(var(--border));
+}
+
+html.dark .nav-panel-explore .context .version:hover {
+  color: hsl(var(--foreground));
+  background-color: hsl(var(--secondary)) !important;
+  border-color: hsl(var(--border));
+}
+
+html.dark .nav-panel-explore .components,
+html.dark .nav-panel-explore .component,
+html.dark .nav-panel-explore .component-menu,
+html.dark .nav-panel-explore .versions,
+html.dark .nav-panel-explore .component-menu ul,
+html.dark .nav-panel-explore .versions ul,
+html.dark .nav-panel-explore .context,
+html.dark .nav-panel-explore .context div {
+  background-color: hsl(var(--arch-panel-bg)) !important;
+  color: hsl(var(--foreground));
+}
+
+html.dark .nav-panel-explore .component .title a,
+html.dark .nav-panel-explore .versions a {
+  color: hsl(var(--foreground)) !important;
+  background-color: hsl(var(--muted)) !important;
+  border: 1px solid hsl(var(--border));
+}
+
+html.dark .nav-panel-explore .versions a:hover,
+html.dark .nav-panel-explore .component .title a:hover {
+  background-color: hsl(var(--secondary)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border));
+}
+
+html.dark .nav-panel-explore .versions .is-current a,
+html.dark .nav-panel-explore .component.is-current .title a {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border));
+}
+
 /* TOC */
 .toc.sidebar {
   background: transparent !important;
