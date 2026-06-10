@@ -108,15 +108,6 @@
     color-scheme: dark;
   }
 
-  html::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    border: 12px solid hsl(var(--arch-frame) / 0.55);
-    z-index: 100;
-  }
-
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: var(--font-sans) !important;
@@ -154,8 +145,21 @@
 
 /* ——— Antora chrome: Stone & Graphite architectural layer ——— */
 
-html body {
-  padding-top: 0 !important;
+/*
+ * Keep Antora default UI scroll model: fixed navbar + body padding-top +
+ * toolbar sticky below the navbar. Do not zero body padding or make the
+ * navbar sticky — that desyncs toolbar top from the mast height.
+ */
+:root {
+  --navbar-height: 3.5rem;
+  --toolbar-height: 2.5rem;
+}
+
+html,
+html body,
+body .body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
 body,
@@ -181,13 +185,17 @@ pre,
   font-family: var(--font-mono) !important;
 }
 
-/* Top header strip */
+/* Top header strip — fixed mast (Antora default positioning) */
 .arch-header .arch-navbar,
 .arch-header .navbar {
-  position: sticky;
-  top: 0;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
   z-index: 8;
-  min-height: 3.5rem;
+  height: var(--navbar-height);
+  min-height: var(--navbar-height);
+  max-height: var(--navbar-height);
   background: hsl(var(--arch-header-bg)) !important;
   color: hsl(var(--arch-header-fg)) !important;
   border-bottom: 1px solid hsl(var(--border)) !important;
@@ -202,12 +210,15 @@ pre,
 
 .arch-site-title {
   display: flex !important;
-  flex-direction: column;
-  align-items: flex-start !important;
-  gap: 0.15rem;
-  padding: 0.65rem 0.75rem !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline !important;
+  gap: 0.5rem 0.75rem;
+  height: var(--navbar-height);
+  padding: 0 0.75rem !important;
   background: transparent !important;
   text-decoration: none !important;
+  white-space: nowrap;
 }
 
 .arch-kicker {
@@ -302,8 +313,13 @@ pre,
   border-radius: 0;
 }
 
-/* Doc toolbar */
+/* Doc toolbar — sticky flush under fixed navbar */
 .toolbar {
+  position: sticky !important;
+  top: var(--navbar-height) !important;
+  z-index: 3;
+  height: var(--toolbar-height);
+  min-height: var(--toolbar-height);
   background: hsl(var(--arch-panel-bg)) !important;
   border-bottom: 1px solid hsl(var(--border)) !important;
   color: hsl(var(--muted-foreground)) !important;
@@ -541,13 +557,21 @@ html.dark .doc table.tableblock tbody td {
   color: hsl(var(--arch-header-fg)) !important;
 }
 
-/* Footer */
+/* Footer — full-bleed, no margin gap above */
+footer.footer,
 .arch-footer {
-  margin-top: 4rem;
-  padding: 3rem 1.5rem 6rem !important;
+  margin: 0 !important;
+  padding: 3rem 1.5rem 4rem !important;
   border-top: 1px solid hsl(var(--border)) !important;
-  background: hsl(var(--background)) !important;
+  background-color: hsl(var(--arch-panel-bg)) !important;
   color: hsl(var(--muted-foreground)) !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html.dark footer.footer,
+html.dark .arch-footer {
+  background-color: hsl(var(--arch-panel-bg)) !important;
 }
 
 .arch-footer-grid {
@@ -601,15 +625,43 @@ html.dark .doc table.tableblock tbody td {
   text-underline-offset: 4px;
 }
 
-.arch-footer-rule {
-  width: 1px;
-  height: 3rem;
-  margin: 4rem auto 0;
-  background: linear-gradient(to bottom, hsl(var(--border)), transparent);
+/* Dark mode page shell (match antora-dark-theme coverage) */
+html.dark,
+html.dark body,
+html.dark body .body,
+html.dark .nav-panel-menu,
+html.dark .nav-panel-explore,
+html.dark .toolbar,
+html.dark main.article,
+html.dark main.article > .content,
+html.dark article.doc {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground));
+}
+
+html.dark .toolbar {
+  background-color: hsl(var(--arch-panel-bg)) !important;
+}
+
+html.dark .navbar,
+html.dark .navbar .navbar-menu {
+  background-color: hsl(var(--arch-header-bg)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+
+html.dark .nav .nav-link:hover,
+html.dark .navbar .navbar-item:hover {
+  background-color: hsl(var(--muted)) !important;
 }
 
 /* Mobile nav */
 @media screen and (max-width: 1023px) {
+  .arch-header .arch-navbar,
+  .arch-header .navbar {
+    height: auto;
+    max-height: none;
+  }
+
   .arch-header .navbar-menu.is-active {
     background: hsl(var(--arch-header-bg)) !important;
     border-top: 1px solid hsl(var(--border));
