@@ -8,6 +8,7 @@ Release notes for tags. Detailed design history: `docs/modules/ROOT/pages/change
 * *Diagrams:* Replace the duplicated PlantUML sequence with canonical Mermaid and retain local copies of the Valentus Themed SVG manifests and adaptive/host artifacts. The example site progressively upgrades `.themed-svg` roles with the pinned sanitized runtime.
 * *npm registry:* Formal deprecation notice in `README.md` and `deprecated` field; maintainer steps in `docs/maintainers/npm-registry-notice.md`.
 * *Distribution:* GitHub Releases ship `ui-bundle.zip` only (no npm). Bundle-first docs; npm deprecation page for migration and lessons learned.
+* *Dependencies:* Lockfile refresh so Antora's `@asciidoctor/core` resolves to 2.2.9; its Opal runtime (0.3.4) uses `fast-glob` instead of the deprecated `glob@7`.
 
 == [0.1.0] - 2026-04-11
 
