@@ -1113,7 +1113,7 @@ html.dark .arch-footer {
   text-underline-offset: 4px;
 }
 
-/* Dark mode page shell (match antora-dark-theme coverage) */
+/* Dark mode page shell (match antora-dark-mode coverage) */
 html.dark,
 html.dark body,
 html.dark body .body,
