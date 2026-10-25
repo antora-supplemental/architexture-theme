@@ -75,16 +75,16 @@
   }
 
   .hex-transitioning::view-transition-group(root) {
-    animation-duration: 1.2s;
+    animation-duration: 0.9s;
   }
 
   .hex-transitioning::view-transition-old(root) {
-    animation: pseudo-wait 1.2s forwards;
+    animation: pseudo-wait 0.9s forwards;
     z-index: 1;
   }
 
   .hex-transitioning::view-transition-new(root) {
-    animation: pseudo-wait 1.2s forwards;
+    animation: pseudo-wait 0.9s forwards;
     mask-image: var(--hex-mask);
     -webkit-mask-image: var(--hex-mask);
     mask-size: 100% 100%;
@@ -120,7 +120,7 @@
 
   .is-transitioning,
   .is-transitioning * {
-    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
   }
 
   h1, h2, h3, h4, h5, h6 {

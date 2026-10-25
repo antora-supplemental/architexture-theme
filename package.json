@@ -1,6 +1,6 @@
 {
   "name": "@amdphreak/architexture-theme-antora",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "packageManager": "pnpm@10.33.0",
   "description": "DEPRECATED on npm — use GitHub release ui-bundle.zip. See README.md.",
   "deprecated": "Retired: do not install. Pin ui.bundle.url to https://github.com/antora-supplemental/architexture-theme/releases/download/v0.1.0/ui-bundle.zip — docs: https://antora-supplemental.github.io/architexture-theme/architexture-theme/guide/npm-deprecation.html",

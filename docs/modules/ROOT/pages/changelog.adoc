@@ -6,7 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 == [Unreleased]
 
+== [0.1.2] - 2026-10-24
+
 === Changed
+
+* Theme switch hex reveal: tiles twice as large (hex radius 45px to 90px) and 25% faster (tile 0.5s to 0.375s, stagger 0-0.7s to 0-0.525s, view transition 1.2s to 0.9s, color swap 0.4s to 0.3s).
+* Footer: removed the external design-parity note.
 
 * Distribution: GitHub Releases ship `ui-bundle.zip` only; npm deprecated. See the guide module npm deprecation page.
 

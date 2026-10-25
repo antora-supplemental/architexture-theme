@@ -12,10 +12,10 @@
       localStorage.setItem('theme', theme);
     }
     
-    // Remove transition class after the duration (400ms matches the CSS)
+    // Remove transition class after the duration (300ms matches the CSS)
     setTimeout(() => {
       document.documentElement.classList.remove('is-transitioning');
-    }, 450);
+    }, 338);
   };
 
   const initToggle = () => {
@@ -33,7 +33,7 @@
 
       const winW = window.innerWidth;
       const winH = window.innerHeight;
-      const R = 45; 
+      const R = 90; 
       const hexW = Math.sqrt(3) * R;
       const cols = Math.ceil(winW / hexW) + 2;
       const rows = Math.ceil(winH / (1.5 * R)) + 2;
@@ -43,14 +43,14 @@
         for (let c = -1; c < cols; c++) {
           const cx = c * hexW + (Math.abs(r) % 2 === 1 ? hexW / 2 : 0);
           const cy = r * 1.5 * R;
-          const delay = Math.random() * 0.7;
+          const delay = Math.random() * 0.525;
           
           const pts = [];
           for(let i=0; i<6; i++) {
             const angle_rad = Math.PI / 180 * (60 * i - 30);
             pts.push(`${cx + R * Math.cos(angle_rad)},${cy + R * Math.sin(angle_rad)}`);
           }
-          polygons += `<polygon points="${pts.join(' ')}" style="transform-origin: ${cx}px ${cy}px; animation: hexReveal 0.5s ${delay}s both ease-out;" fill="black" />`;
+          polygons += `<polygon points="${pts.join(' ')}" style="transform-origin: ${cx}px ${cy}px; animation: hexReveal 0.375s ${delay}s both ease-out;" fill="black" />`;
         }
       }
 

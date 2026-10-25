@@ -2,7 +2,7 @@
 
 == Architectural Context
 
-The theme has been upgraded from a static CSS override to a dynamic, Tailwind v4-powered architectural system. This allows the Antora documentation to maintain design parity with the core portfolio site.
+The theme has been upgraded from a static CSS override to a dynamic, Tailwind v4-powered architectural system. Stone and Graphite tokens, typography, and the hex reveal transition now come from one Tailwind source.
 
 == Key Changes
 
